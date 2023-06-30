@@ -1,5 +1,5 @@
 import React from 'react'
-import withAuth from './Components/authHOC'
+import withAuth from './Components/AuthHOC'
 
 function about() {
   return (

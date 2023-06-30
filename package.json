@@ -1,4 +1,5 @@
 {
+  "homepage": "https://ChetanSaini12.github.io/cp-platforms",
   "name": "panda",
   "version": "0.1.0",
   "private": true,
@@ -6,7 +7,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "autoprefixer": "10.4.14",
@@ -17,5 +20,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tailwindcss": "3.3.2"
+  },
+  "devDependencies": {
+    "gh-pages": "^5.0.0"
   }
 }

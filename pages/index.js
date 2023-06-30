@@ -1,5 +1,5 @@
 import { Inter } from 'next/font/google'
-import withAuth from './Components/authHOC'
+import withAuth from './Components/AuthHOC'
 
 const inter = Inter({ subsets: ['latin'] })
 

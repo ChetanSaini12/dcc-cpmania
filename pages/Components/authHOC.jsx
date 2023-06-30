@@ -10,7 +10,7 @@ export default function withAuth(Component) {
             const isLogin = checkLoginStatus();
             if(!isLogin)
             {
-                router.push('/login');
+                router.push('/Login');
             }
         }, []);
         return <Component {...props} />
