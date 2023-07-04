@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Home_Page, Contest_Page, Leaderboard_Page, Profile_Page, Login_Page, Sign_Up_Page } from '../../utils/Constants'
+import { Home_Page, Contest_Page, Leaderboard_Page, Profile_Page, Login_Page, Sign_Up_Page } from '../../../utils/Constants'
 import { useSelector } from 'react-redux'
 import { GiHamburgerMenu } from 'react-icons/gi'
 const Navbar = () => {

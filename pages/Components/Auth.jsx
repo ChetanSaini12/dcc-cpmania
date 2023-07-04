@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { checkLoginStatus } from '../utils/Isauth';
+import { checkLoginStatus } from '../../utils/Isauth';
 import { useSelector } from 'react-redux';
 // import { checkToken } from '../utils/Isauth';
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { setLogin } from './utils/Isauth'
+import { setLogin } from '../utils/Isauth'
 import { useRouter } from 'next/router';
 
 
