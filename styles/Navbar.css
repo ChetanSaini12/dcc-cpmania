@@ -1,0 +1,145 @@
+.navbar{
+    box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.1);
+    background-color: #171525;
+    position: fixed;
+    z-index: 1000;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    width: 100%;
+    min-height: 4rem;
+} 
+
+.logo{
+    flex: 1 1 0%;
+    margin:4px;
+  }
+  
+
+.navbar-links{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.navbar-links li{
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 1px;
+    height: 40px;
+    display: grid;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: cursive;
+    min-width: 100px;
+    margin: 5px;
+    text-align: center;
+}
+
+
+.navbar-links li a:hover{
+    color: #5c53d0;
+    
+    
+}
+
+.vl{
+    border-left: 1px solid rgb(255, 255, 255);
+    height: 40px;
+    margin: 0 2rem;
+}
+
+.navbar-usermenu-items{
+    background-color: #185b4b;
+}
+
+.navbar-usermenu-items li a:hover{
+    color: #171525;
+
+}
+
+.custom-navbar-hamburger{
+    display: none;
+  }
+  
+  .navbar-links-off{
+    position: fixed;
+    top: 64px;
+    right: -100%;
+    width: auto;
+    height: auto;
+    min-width: 30vw;
+    background-color: var(--background-color);
+    border: #ffffff 1px solid;
+    transition: right 0.5s ease-out;
+    display: flex;
+    flex-direction: column;
+    z-index: 30;
+    border-radius: 5%;
+    padding: 1rem;
+  }
+
+  .navbar-links-off li{
+    min-width: 100px;
+    list-style-type: nzone;
+    text-align: center;
+    border-radius: 8px;
+    height: 38px;
+    margin: 5px;
+    display: grid;
+    grid-template-rows: 5;
+    align-items: center;
+    z-index: 30;
+    
+  }
+
+  .navbar-links-off li:hover{
+    background: #3d3d3e ;
+  }
+  .navbar-links-off li a{
+    color:white;
+  }
+
+  .avatar{
+    background-color: #8A3FFC;
+  }
+
+@media screen and (max-width: 650px){
+    .navbar-links{
+      display: none;
+    }
+  
+    .custom-navbar-hamburger{
+      display: block;
+      border: var(--navbar-item-border) 2px solid;
+      margin-right:8px;
+    }
+  
+    .custom-navbar-hamburger :hover{
+      color: #83d1d1;
+    }
+
+    .custom-navbar-hamburger.active{
+      color: #05d8d8;
+    }
+  
+    .navbar-links-off.active{
+      right:0;
+      z-index: 30;
+
+    }
+
+    .vl{
+      height: 0;
+      border-bottom: 1px solid rgb(255, 255, 255);
+      width: 10rem;
+      margin: 1rem 0;
+  }
+  
+    
+  }

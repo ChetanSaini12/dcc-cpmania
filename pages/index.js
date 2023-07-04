@@ -1,16 +1,17 @@
 import { Inter } from 'next/font/google'
-import withAuth from './Components/AuthHOC'
+import withAuth from './Components/Auth'
+import Navbar from './Components/Navbar/Navbar';
+import Homepage from './Homepage/Homepage';
 
 const inter = Inter({ subsets: ['latin'] })
 
-function Home() {
+function home() {
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <h1 className="text-4xl font-bold text-center">Hunting Coder</h1>
+    <main>
+      {/* <Navbar/> */}
+      <Homepage/>
     </main>
   )
 }
 
-export default withAuth(Home)
+export default withAuth(home);

@@ -1,0 +1,111 @@
+.home {
+    position: relative;
+    top:5rem;
+    display: grid;
+    width: 100%;
+    place-items: center;
+    background-size: cover;
+    background-position: center;
+    /* max-height: 10vh; */
+    background-color: inherit;
+}
+
+
+.home-content{
+    z-index: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    max-width: 80rem/* 1280px */;
+    gap: 1rem/* 16px */;
+    padding: 1rem/* 16px */;
+}
+
+.text{
+    height: fit-content;
+    font-family: Cambria,Times New Roman,Times,serif;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+
+}
+
+.home h1{
+    font-size: 3rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    font-family: cursive,Noto Color Emoji;
+    color: #fff;
+    text-shadow: 0 0 10px #000;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    position: relative;
+    text-decoration: none;
+    z-index: 1;
+    margin-top: 2rem;
+}
+
+.home h1 span{
+  line-height: normal;
+}
+
+.lottie {
+    width: 50vw;
+}
+
+.design1{
+  position: absolute;
+  top: -15%;
+  left: 0;
+  z-index: -1;
+  width: 20%;
+}
+.design2{
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  z-index: -1;
+  width: 20%;
+}
+
+
+@media screen and (max-width : 850px){
+ 
+    .home-content div p{
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+  
+    .home-content div h1{
+      font-size: 24px;
+      line-height: 0.5;
+      font-weight: 700;
+    
+    }
+    .home-content div p{
+      font-size: 12;
+    }
+
+  }
+  
+  @media screen and (max-width : 600px){
+    .home-content{
+      flex-direction: column;
+    }
+    .lottie {
+      width: 90vw;
+  }
+  .text{
+    width: 80vw;
+  }
+  .design1{
+    display: none;
+  }
+  .design2{
+    display: none;
+  }
+}
+  

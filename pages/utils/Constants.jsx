@@ -1,0 +1,6 @@
+export const Contest_Page = '/Contest'
+export const Leaderboard_Page = '/Leaderboard'
+export const Profile_Page = '/Profile'
+export const Home_Page = '/'
+export const Login_Page = '/Login'
+export const Sign_Up_Page = '/SignUp'

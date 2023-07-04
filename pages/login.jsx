@@ -1,10 +1,10 @@
 import React from 'react'
-import { setLogin } from './utils/isauth'
+import { setLogin } from './utils/Isauth'
 import { useRouter } from 'next/router';
 
 
 
-const login = () => {
+const Login = () => {
   const router = useRouter();
   const handleLogin = () => {
     setLogin();
@@ -14,11 +14,11 @@ const login = () => {
 
 
   return (
-    <div>
+    <div id='login'>
       This is the login page
       <button onClick={handleLogin} >Login</button>
     </div>
   )
 }
 
-export default login
+export default Login

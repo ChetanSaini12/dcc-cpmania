@@ -1,8 +1,9 @@
 import React from 'react'
-import withAuth from './Components/AuthHOC'
+import withAuth from './Components/Auth'
 
-function about() {
-  return (
+function about() 
+{
+  return(
     <div>
       Hello, I am about page
     </div>
