@@ -1,18 +1,23 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { checkLoginStatus } from '../utils/Isauth';
+import { useSelector } from 'react-redux';
+// import { checkToken } from '../utils/Isauth';
 
-export default function withAuth(WrappedComponent) {
-  return (props) => {
-    const router = useRouter();
 
-    useEffect(() => {
-      const isLogin = checkLoginStatus();
-      if (!isLogin) {
-        router.push('/Login'); 
-      }
-    }, [router]);
+export default function Auth(props) {
+  const loggedIn = useSelector(state => state.login.loggedIn);
+  useEffect(() => {
+      if (!loggedIn) {
+          // checkToken().then((res) => {
+          //     console.log("From useEffect of Auth");
+          //     console.log(Date());
+          // }).catch((err) => {
+          //     console.log(err);
 
-    return <WrappedComponent {...props} />
-  };
+          // })
+      };
+  })
+
+  return (<>{props.children}</>)
 }

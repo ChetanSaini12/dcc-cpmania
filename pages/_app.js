@@ -5,7 +5,7 @@ import '/styles/Home.css'
 
 import { Provider } from 'react-redux'
 import store from '../store/baseStore'
-import withAuth from './Components/Auth'
+import Auth from './Components/Auth'
 import Navbar from './Components/Navbar/Navbar'
 
 
@@ -15,9 +15,9 @@ export default function App({ Component, pageProps }) {
     <>
       <Provider store={store}>
       <Navbar />
-        <withAuth>
+        <Auth>
           <Component {...pageProps} />
-        </withAuth>
+        </Auth>
       </Provider>
     </>
   );
