@@ -20,7 +20,7 @@ const Navbar = () => {
             <li><Link href={Leaderboard_Page}>Leaderboard</Link></li>
             {loggedIn &&
             <>
-            <div class="vl"></div>
+            <div className="vl"></div>
             <UserMenu userName={userName} profile_pic={profile_pic} />
             </>
             }
@@ -42,7 +42,7 @@ const Navbar = () => {
             <li><Link href={Leaderboard_Page}>Leaderboard</Link></li>
             {loggedIn &&
             <>
-            <div class="vl"></div>
+            <div className="vl"></div>
             <UserMenu userName={userName} profile_pic={profile_pic} />
             </>
             }

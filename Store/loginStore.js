@@ -3,7 +3,7 @@ import {createSlice} from '@reduxjs/toolkit';
 const loginSlice = createSlice({
     name: 'login',
     initialState: {
-        loggedIn: true,
+        loggedIn: false,
         isLoading: false,
         userName: "chetan_saini",
         profile_pic: "https://ik.imagekit.io/pqymxdgbi/avtar.png"

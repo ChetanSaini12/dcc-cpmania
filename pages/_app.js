@@ -4,7 +4,7 @@ import '/styles/Navbar.css'
 import '/styles/Home.css'
 
 import { Provider } from 'react-redux'
-import store from '../store/baseStore'
+import store from '../Store/baseStore'
 import Auth from './Components/Auth'
 import Navbar from './Components/Navbar/Navbar'
 
