@@ -9,7 +9,7 @@ const ContestBody = (props) => {
     const fetchData = async () => {
       try {
         setContests(null);
-        const response = await fetch(`http://localhost:7000/schedule/${slug}`, {
+        const response = await fetch(`https://super-school-uniform-pike.cyclic.app/schedule/${slug}`, {
           method: "GET",
         });
         const data = await response.json();
