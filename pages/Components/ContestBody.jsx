@@ -8,6 +8,7 @@ const ContestBody = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setContests(null);
         const response = await fetch(`http://localhost:7000/schedule/${slug}`, {
           method: "GET",
         });
@@ -15,29 +16,15 @@ const ContestBody = (props) => {
         console.log("data");
         console.log(data);
         setContests(data);
-        setTemp(contests.length);
       } catch (error) {
         console.error("Error fetching Contest:", error);
       }
     };
 
     fetchData();
-  }, [contests]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setContests((contests) => {
-         contests.map((contest) => {
-          const remainingTime = contest.remaining_time - 1;
-          return { ...contest, remaining_time: remainingTime };
-        });
-      });
-    }, 1000);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
+    // }, 10000);
+  }, [slug]);
 
   const formatTime = (timeInSeconds) => {
     const days = Math.floor(timeInSeconds / 86400);
@@ -55,65 +42,156 @@ const ContestBody = (props) => {
     }
   };
 
-  return (
-    <div id="contestbody">
-      {contests ? (
-        <div className="contest-content">
-          <h1>{props.platform}</h1>
-          <div className="overflow-x-auto">
-            <table className="table table-zebra">
-              {/* head */}
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th>Date</th>
-                  <th>Start Time</th>
-                  <th>End Time</th>
-                  <th>Duration</th>
-                  <th>Starts In</th>
-                </tr>
-              </thead>
-              <tbody>
-                {/* row 1 */}
-
-                {contests.map((item) => (
+  if (contests == null) {
+    return <div>Loading...</div>;
+  } else {
+    return (
+      //{}
+      <>
+        {/* {contests ? ( */}
+        <div id="contestbody">
+          <div className="contest-content">
+            <div className="overflow-x-auto">
+              <table className="table table-zebra">
+                {/* head */}
+                <thead>
                   <tr>
-                    <th>1</th>
-                    <td>{item.name}</td>
-                    <td>
-                      {new Date(item.start_time).toLocaleDateString("en-US", {
-                        month: "long",
-                        day: "numeric",
-                      })}
-                    </td>
-                    <td>
-                      {new Date(item.start_time).toLocaleTimeString("en-US", {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                        hour12: false,
-                      })}
-                    </td>
-                    <td>
-                      {new Date(item.end_time).toLocaleTimeString("en-US", {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                        hour12: false,
-                      })}
-                    </td>
-                    <td>{formatTime(item.duration)}</td>
-                    <td>{formatTime(item.remaining_time)}</td>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Duration</th>
+                    <th>Starts In</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {/* row 1 */}
+
+                  {contests.map((item, index) => {
+                    let remainingTime = item.remaining_time;
+
+                    let remainingHours = Math.floor(
+                      remainingTime / (1000 * 60 * 60)
+                    );
+                    let remainingMinutes = Math.floor(
+                      (remainingTime % (1000 * 60 * 60)) / (1000 * 60)
+                    );
+                    let remainingSeconds = Math.floor(
+                      (remainingTime % (1000 * 60)) / 1000
+                    );
+
+                    //we want to await till the data is fetched
+
+                    function timerStart() {
+                      setInterval(() => {
+                        remainingSeconds = remainingSeconds - 1;
+                        document
+                          .getElementById("counterSecond")
+                          .style.setProperty("--value", remainingSeconds);
+                        if (remainingSeconds == 0) {
+                          remainingSeconds = 59;
+                          remainingMinutes = remainingMinutes - 1;
+                          document
+                            .getElementById("counterMinute")
+                            .style.setProperty("--value", remainingMinutes);
+                        }
+                        if (remainingMinutes == 0 && remainingSeconds == 0) {
+                          remainingMinutes = 59;
+                          remainingHours = remainingHours - 1;
+                          document
+                            .getElementById("counterHour")
+                            .style.setProperty("--value", remainingHours);
+                        }
+                      }, 1000);
+                    }
+
+                    // Store the interval ID in a variable
+                    const intervalId = setInterval(() => {
+                      if (contests) {
+                        console.log("timer started");
+                        clearInterval(intervalId); // Stop the interval after executing timerStart()
+                        setTimeout(() => {
+                        timerStart();
+                        }, 5000);
+                      }
+                    }, 1000);
+
+                    console.log(
+                      remainingHours +
+                        ":" +
+                        remainingMinutes +
+                        ":" +
+                        remainingSeconds
+                    );
+
+                    return (
+                      <tr>
+                        <th>{index + 1}</th>
+                        <a href="https://leetcode.com/" target="__blank">
+                          <td>{item.name}</td>
+                        </a>
+                        <td>
+                          {new Date(item.start_time).toLocaleDateString(
+                            "en-US",
+                            {
+                              month: "long",
+                              day: "numeric",
+                            }
+                          )}
+                        </td>
+                        <td>
+                          {new Date(item.start_time).toLocaleTimeString(
+                            "en-US",
+                            {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                              hour12: false,
+                            }
+                          )}
+                        </td>
+                        <td>
+                          {new Date(item.end_time).toLocaleTimeString("en-US", {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                            hour12: false,
+                          })}
+                        </td>
+                        <td>{formatTime(item.duration)}</td>
+                        {/* <td>{formatTime(item.remaining_time)}</td> */}
+                        <td>
+                          <span className="countdown font-mono " id="conuter">
+                            <span
+                              id="counterHour"
+                              style={{ "--value": remainingHours }}
+                            ></span>
+                            :
+                            <span
+                              id="counterMinute"
+                              style={{ "--value": remainingMinutes }}
+                            ></span>
+                            :
+                            <span
+                              id="counterSecond"
+                              style={{ "--value": remainingSeconds }}
+                            ></span>
+                            {/* <span remainingSeconds></span> */}
+                          </span>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-      ) : (
-        <div>Loading...</div>
-      )}
-    </div>
-  );
+        {/* ) : ( */}
+        {/* <div>Loading...</div> */}
+        {/* )} */}
+      </>
+    );
+  }
 };
 
 export default ContestBody;

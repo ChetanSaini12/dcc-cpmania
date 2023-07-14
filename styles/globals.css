@@ -31,12 +31,12 @@ html {
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+  /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
     background-color: #171525;
     /* background-size: 80px 80px, 80px 80px, 20px 20px, 20px 20px; */
     /* background-position: -200px -200px, -200px -200px, -100px -100px,
@@ -149,6 +149,14 @@ body {
 
 
 /*Contest Body*/
+#contestbody tbody tr:hover{
+  background-color: #484836;
+}
 
+#contestbody tr:nth-child(even){
+  background-color: #2a2a40;
+}
 
-
+#contestbody .table :where(thead, tbody) :where(tr:not(:last-child)) {
+  border-bottom: 1px solid #484836;
+}
