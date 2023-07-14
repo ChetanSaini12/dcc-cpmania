@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
 
 const ContestBody = (props) => {
   const [contests, setContests] = useState(null);
