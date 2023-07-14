@@ -125,7 +125,7 @@ const ContestBody = (props) => {
                     );
 
                     return (
-                      <tr>
+                      <tr key={index}>
                         <th>{index + 1}</th>
                         <a href="https://leetcode.com/" target="__blank">
                           <td>{item.name}</td>
