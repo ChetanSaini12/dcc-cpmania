@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 const ContestBody = (props) => {
   const [contests, setContests] = useState(null);
-  const slug = props.platform.toLowerCase();
+  const slug = props.platform?.toLowerCase();
 
   /**
    * Timer logic to manage a countdown for each contest.
