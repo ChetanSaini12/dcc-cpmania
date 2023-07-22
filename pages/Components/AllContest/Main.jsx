@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import ContestBody from "./Components/AllContest/ContestBody";
+import ContestBody from "./ContestBody";
 import { SiCodeforces } from "react-icons/si";
 
-const Contest = () => {
+const Main = () => {
   const [activeTab, setActiveTab] = useState("Fastforces");
 
   const handleClick = (platform) => {
@@ -60,4 +60,4 @@ const Contest = () => {
   );
 };
 
-export default Contest;
+export default Main;

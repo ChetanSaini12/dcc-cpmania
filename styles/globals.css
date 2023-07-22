@@ -46,35 +46,35 @@ body {
     overflow: auto;
 }
 
-#contest, #home, #leaderboard, #profile, #signup, #login{
+#contest, #home, #leaderboard, #profile, #log_sign{
   position: relative;
-  top: 5rem;
+  padding: 5rem 0 2rem 0;
 }
 
 
 /* Login */
-#login {
+#log_sign {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  
 }
 
-#login .form-menu {
+#log_sign .form-menu {
   display: flex;
   flex-direction: column;
   /* align-items: center; */
   justify-content: center;
   width: 50vw;
-  /* height: 60vh; */
-  height: fit-content;
+  /* height: fit-content; */
   background-color: #3c324d;
   border-radius: 1rem;
   box-shadow: 0 0 1rem 0.5rem rgba(0, 0, 0, 0.5);
 }
 
 
-#login h1{
+#log_sign h1{
   font-size: 2.5rem;
   margin-bottom: 1rem;
   font-family: cursive;
@@ -82,7 +82,7 @@ body {
 
 }
 
-#login .btn{
+#log_sign .btn{
   margin-top: 1rem;
   border-radius: 0.5rem;
   cursor: pointer;
@@ -91,27 +91,34 @@ body {
 }
 
 
-#login .label-text{
+#log_sign .label-text{
   font-size: 1.2rem;
+  word-wrap: break-word !important;
 }
 
-#login .form-menu .input-box{
+#log_sign .form-menu .input-box{
   margin-bottom: 1rem;
   margin-left: 4%;
   margin-right: 4%;
 }
 
-#login ::placeholder{
+#log_sign ::placeholder{
   color: #484836;
   font-family: cursive;
 }
 
-#login .signup{
+#log_sign .signup{
   margin-top: 1rem;
   display: flex;
   justify-content: center;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   text-decoration: underline;
+}
+
+#log_sign .user_cf{
+  font-size: small;
+  color: grey;
+  font-style: italic;
 }
 
 
@@ -159,4 +166,52 @@ body {
 
 #contestbody .table :where(thead, tbody) :where(tr:not(:last-child)) {
   border-bottom: 1px solid #484836;
+}
+
+#contestbody .count_down{
+  font-size: x-small;
+
+}
+
+#contestbody .count_down span{
+  font-size: 1rem;
+}
+
+.count_down {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.count_down span {
+  margin: 0 4px;
+  padding: 3px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 3px;
+}
+
+.count_down span span {
+  font-weight: bold;
+}
+
+#contestbody th, td{
+  text-align: center;
+  
+}
+
+.contestBody_loading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh;
+  width: 100vw; */
+}
+
+.contestBody_loading .lottie {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25vw;
 }

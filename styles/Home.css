@@ -52,7 +52,7 @@
   line-height: normal;
 }
 
-.lottie {
+#home .lottie {
     width: 50vw;
 }
 
@@ -95,7 +95,7 @@
     .home-content{
       flex-direction: column;
     }
-    .lottie {
+    #home .lottie {
       width: 90vw;
   }
   .text{

@@ -1,12 +1,48 @@
-import React from "react";
+import React  from "react";
 import { setLogin } from "../utils/Isauth";
 import { useRouter } from "next/router";
 import { Sign_Up_Page } from "@/utils/Constants";
-import Link from "next/link";
+import Link from "next/link";   
+import { useSelector } from "react-redux";
+import store from "../Store/baseStore";
+import  loginUser  from "../Store/loginStore";
+import { useState } from "react";
+
 
 const Login = () => {
+
+  const router = useRouter();
+  const {loggedIn} = useSelector(state => state.login)
+  const [login, setLogin] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onLogin = async (e) => {
+    e.preventDefault();
+    const response = await fetch("http://localhost:5000/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    });
+
+    
+
+    const content = await response.json();
+    console.log(content);
+    if (content.success) {
+      setLogin(true);
+      router.push("/");
+    } else {
+      alert("Invalid Credentials");
+    }
+  };
+
+
+
   return (
-    <div id="login">
+    <div id="log_sign">
       <h1>
         <span className="bg-primary-content text-transparent bg-clip-text">
           Login
@@ -24,8 +60,10 @@ const Login = () => {
           <div className="input-box">
             <input
               type="text"
+              value={username}
               placeholder="chetan_saini"
               className="input input-bordered w-full "
+              onChange={(e) => setUsername(e.target.value)}
             />
           </div>
           <label className="label">
@@ -38,14 +76,17 @@ const Login = () => {
           <div className="input-box">
             <input
               type="password"
+              value={password}
               placeholder="*********"
               className="input input-bordered w-full "
+              onChange={(e) => setPassword(e.target.value)} 
             />
           </div>
-          <button className="btn btn-outline btn-success">Login</button>
+          <button className="btn btn-outline btn-success" onClick={onLogin} >Login</button>
           <Link href={Sign_Up_Page} >
             <span className="signup">New user? - Sign Up</span>
           </Link>
+          
         </div>
       </form>
     </div>
