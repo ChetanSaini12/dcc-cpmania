@@ -16,35 +16,42 @@ const SingUp = () => {
   const [login, setLogin] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword , setConfirmPassword] = useState("")
+  const [confirm_password , setconfirm_password] = useState("")
   const [name , setName] = useState("");
   const [email , setEmail] = useState("");
-  const [cf , setCf] = useState("");
-  const [cc , setCc] = useState("");
-  const [lc , setLc] = useState("");
-  const [ac , setAc] = useState("");
+  const [codeforcesURL , setCodeforcesURL] = useState("");
+  const [codechefURL , setCodechefURL] = useState("");
+  const [leetcodeURL , setLeetcodeURL] = useState("");
+  const [atcoderURL , setAtcoderURL] = useState("");
+  const [error, setError] = useState(null);
 
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/auth/signup", {
+    try {
+    const response = await fetch("http://localhost:7000/auth/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ name, email, password , confirm_password , username , leetcodeURL , codeforcesURL , codechefURL , atcoderURL }),
     });
 
-    
-
     const content = await response.json();
-    console.log(content);
+    console.log("Response: " + response);    
+    console.log("Content: " + content);
     if (content.success) {
       setLogin(true);
       router.push("/");
     } else {
-      alert("Invalid Credentials");
+
+      setError(content.message);
+      // alert(content.message);
     }
+  }
+  catch(err){
+    console.error("Error fetching data:", err);
+  }
   };
 
 
@@ -148,10 +155,10 @@ const SingUp = () => {
           <div className="input-box">
             <input
               type="password"
-              value={confirmPassword}
+              value={confirm_password}
               placeholder="*********"
               className="input input-bordered w-full "
-              onChange={(e) => setConfirmPassword(e.target.value)} 
+              onChange={(e) => setconfirm_password(e.target.value)} 
             />
           </div>
 
@@ -165,10 +172,10 @@ const SingUp = () => {
           <div className="input-box">
             <input
               type="text"
-              value={cf}
+              value={codeforcesURL}
               placeholder="chetan_saini"
               className="input input-bordered w-full "
-              onChange={(e) => setCf(e.target.value)} 
+              onChange={(e) => setCodeforcesURL(e.target.value)} 
             />
           </div>
 
@@ -183,10 +190,10 @@ const SingUp = () => {
           <div className="input-box">
             <input
               type="text"
-              value={cc}
+              value={codechefURL}
               placeholder="chetan_saini21"
               className="input input-bordered w-full "
-              onChange={(e) => setCc(e.target.value)} 
+              onChange={(e) => setCodechefURL(e.target.value)} 
             />
           </div>
 
@@ -202,10 +209,10 @@ const SingUp = () => {
           <div className="input-box">
             <input
               type="text"
-              value={lc}
+              value={leetcodeURL}
               placeholder="chetan_saini21"
               className="input input-bordered w-full "
-              onChange={(e) => setLc(e.target.value)} 
+              onChange={(e) => setLeetcodeURL(e.target.value)} 
             />
           </div>
 
@@ -221,12 +228,19 @@ const SingUp = () => {
           <div className="input-box">
             <input
               type="text"
-              value={ac}
+              value={atcoderURL}
               placeholder="chetan_saini12"
               className="input input-bordered w-full "
-              onChange={(e) => setAc(e.target.value)} 
+              onChange={(e) => setAtcoderURL(e.target.value)} 
             />
           </div>
+
+          {error && 
+          <div className=" error alert alert-info">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-current shrink-0 w-6 h-6"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span>{error}</span>
+          </div>
+}
 
 
           <button className="btn btn-outline btn-success" onClick={onSignUp} >SignUp</button>

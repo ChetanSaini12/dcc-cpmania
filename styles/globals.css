@@ -121,6 +121,18 @@ body {
   font-style: italic;
 }
 
+#log_sign .error {
+  margin-bottom: 1rem;
+  margin-left: 4%;
+  margin-right: 4%;
+  height: 3rem;
+  align-items: center;
+  display: flex;
+  width: auto;
+  background-color: #209a95;
+  
+}
+
 
 /* Contest */
 .tabSection{
