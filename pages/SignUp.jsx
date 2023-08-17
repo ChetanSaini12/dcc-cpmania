@@ -1,4 +1,4 @@
-import React  from "react";
+import React, { useEffect }  from "react";
 import { setLogin } from "../utils/Isauth";
 import { useRouter } from "next/router";
 import { Login_Page} from "@/utils/Constants";
@@ -25,8 +25,18 @@ const SingUp = () => {
   const [atcoderURL , setAtcoderURL] = useState("");
   const [error, setError] = useState(null);
 
+  useEffect(() => {
+    if (loggedIn) {
+      router.push("/");
+    }
+  }, [loggedIn]);
 
   const onSignUp = async (e) => {
+
+
+
+
+
     e.preventDefault();
     try {
     const response = await fetch("http://localhost:7000/auth/signup", {
@@ -42,6 +52,7 @@ const SingUp = () => {
     console.log("Content: " + content);
     if (content.success) {
       setLogin(true);
+      store.dispatch(loginUser({username : username, loggedIn : true}));
       router.push("/");
     } else {
 

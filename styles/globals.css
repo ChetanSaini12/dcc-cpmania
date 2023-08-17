@@ -46,7 +46,7 @@ body {
     overflow: auto;
 }
 
-#contest, #home, #leaderboard, #profile, #log_sign{
+#contest, #home, #leaderboard, #profile, #log_sign, #blog{
   position: relative;
   padding: 5rem 0 2rem 0;
 }

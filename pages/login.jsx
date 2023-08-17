@@ -1,11 +1,11 @@
-import React  from "react";
+import React, { useEffect }  from "react";
 import { setLogin } from "../utils/Isauth";
 import { useRouter } from "next/router";
 import { Sign_Up_Page } from "@/utils/Constants";
 import Link from "next/link";   
 import { useSelector } from "react-redux";
 import store from "../Store/baseStore";
-import  loginUser  from "../Store/loginStore";
+import  {loginUser}  from "../Store/loginStore";
 import { useState } from "react";
 
 
@@ -13,13 +13,19 @@ const Login = () => {
 
   const router = useRouter();
   const {loggedIn} = useSelector(state => state.login)
-  const [login, setLogin] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  useEffect(() => {
+    if (loggedIn) {
+      router.push("/");
+    }
+  }, [loggedIn]);
+
+
   const onLogin = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/auth/login", {
+    const response = await fetch("http://localhost:7000/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,10 +38,12 @@ const Login = () => {
     const content = await response.json();
     console.log(content);
     if (content.success) {
-      setLogin(true);
+
+      store.dispatch(loginUser({username : username, loggedIn : true}));
+      console.log("Login Success");
       router.push("/");
     } else {
-      alert("Invalid Credentials");
+      alert(content.message);
     }
   };
 
