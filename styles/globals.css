@@ -46,7 +46,7 @@ body {
     overflow: auto;
 }
 
-#contest, #home, #leaderboard, #profile, #log_sign, #dashboard{
+#contest, #home, #leaderboard, #profile, #log_sign, #profile{
   position: relative;
   padding: 5rem 0 2rem 0;
 }
@@ -226,4 +226,81 @@ body {
   align-items: center;
   justify-content: center;
   width: 25vw;
+}
+
+
+
+
+/* Dashboard */
+#dashboard {
+  display: flex;
+  align-items: stretch;
+  height: 80vh;
+  width: 97vw;
+  margin: auto;
+}
+
+#dashboard .userInfo {
+  margin: 5px;
+  flex-grow: 1;
+  border: #3019c7;
+  border-radius: 1rem;
+  box-shadow: 0 0 1rem 0.5rem rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+#dashboard .userHandles {
+  margin: 5px;
+  flex-grow: 5;
+  border: #3019c7;
+  border-radius: 1rem;
+  box-shadow: 0 0 1rem 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+#dashboard .userAvatar {
+  margin-top: 5%;
+}
+
+#dashboard .userAvatar img {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+#dashboard .userInfo .userName {
+  margin-top: 5%;
+}
+
+#dashboard .userInfo .name {
+  font-size: x-large;
+  margin-top: 5%;
+}
+
+#dashboard .userInfo .urls {
+    margin: 5%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem 0.5rem rgba(0, 0, 0, 0.5);
+
+}
+
+#dashboard .userInfo .urls div {
+  margin: 2%;
+  font-size: large;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+#dashboard .userInfo .urls div .url {
+  margin-left: 5%;
 }
