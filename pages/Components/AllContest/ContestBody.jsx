@@ -50,7 +50,7 @@ const ContestBody = (props) => {
   if (contests == null) {
     return (
       <div className="contestBody_loading">
-        <div  className="lottie" >
+        <div className="lottie" >
           <LoadingAnimation/>
         </div>
       </div>

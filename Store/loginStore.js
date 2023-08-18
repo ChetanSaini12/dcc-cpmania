@@ -4,7 +4,7 @@ import avatar from './avtar.webp';
 const loginSlice = createSlice({
     name: 'login',
     initialState: {
-        loggedIn: true,
+        loggedIn: false,
         isLoading: false,
         userName: "chetan_saini",
         name: "Chetan Saini",

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { Rating_Url } from '@/utils/Constants'
 import {useState, useEffect} from 'react'
 import axios from 'axios'
+import NotFoundBita from '../Components/NotFound/notFounfbita'
+import LoadingSkel1 from '../Components/LoadingAnimation/loadingSkel1'
 
 const Codechef = props => {
 
@@ -21,8 +23,20 @@ const Codechef = props => {
     },[isLoading]);
 
     if(isLoading){
-        return <div>Loading...</div>
-    }
+     return <div className="handle_loading">
+                 <div className="lottie" >
+                 <LoadingSkel1 />
+                 </div>
+             </div>
+     }
+
+     if(info.rating == undefined){
+          return <div className="handle_notFound">
+                    <div className="lottie" >
+                    <NotFoundBita />
+                    </div>
+               </div>
+     }
 
   return (
     <div className='all_info'> 

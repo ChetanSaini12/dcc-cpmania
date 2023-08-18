@@ -370,3 +370,53 @@ body {
   width: 100%;
   padding: 2rem;
 }
+
+
+.rating_notFound{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh;
+  width: 100vw; */
+}
+
+.rating_notFound .lottie {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25vw;
+  color: #3c324d;
+}
+
+.handle_notFound{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.handle_notFound .lottie {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10vw;
+  color: #3c324d;
+}
+
+
+.handle_loading{
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.handle_loading .lottie {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10vw;
+  color: #3c324d;
+}

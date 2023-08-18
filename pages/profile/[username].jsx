@@ -3,12 +3,15 @@ import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { useParams } from 'next/navigation'
 import Dashboard from "./dashboard";
+import NotFoundAlpha from "../Components/NotFound/notFoundalpha";
+import LoadingAnimation from "../Components/LoadingAnimation/LottieLoadingAnimation";
 
 
 const Profile = () => {
   const router = useRouter();
+  const [isvalid, setIsvalid] = useState(false);
   const [username, setUsername] = useState('chetan_saini');
-  const { loggedIn } = useSelector((state) => state.login);
+  
 
   const [user, setUser] = useState({
     username: 'chetan_saini',
@@ -17,11 +20,11 @@ const Profile = () => {
     profile_pic : "https://ui-avatars.com/api/?name=Chetan Saini&size=128&background=random",
     leetcodeURL : "chetan_saini21",
     atcoderURL : "chetan_saini12",  
-    codeforcesURL : "cheatn_saini",
+    codeforcesURL : "chetan_saini",
     codechefURL : "chetan_saini21",
   });
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     var currentURL = window.location.href;
     var urlSegments = currentURL.split('/');
@@ -31,9 +34,6 @@ const Profile = () => {
 
 
   useEffect(() => {
-    if (!loggedIn) {
-      router.push("/login");
-    } else {
       if (username !== undefined) {
         (async () => {
           try {
@@ -49,9 +49,10 @@ const Profile = () => {
 
             if (response.ok) {
               const data = await response.json()
-
+              setIsvalid(true);
               setUser(data.user); 
             } else {
+              setIsvalid(false);
               console.error("Error fetching user data:", response.statusText);
             }
           } catch (error) {
@@ -61,18 +62,32 @@ const Profile = () => {
           }
         })(); 
       }
-    }
-  }, [username]); 
+    
+  }, [isLoading, isvalid]); 
+
+  if(isLoading)
+  {
+    return <div id="profile">
+       <div className="contestBody_loading">
+        <div className="lottie" >
+          <LoadingAnimation/>
+        </div>
+      </div>
+    </div>
+  }
+
+  if(!isvalid)
+  {
+    return <div id="profile" className="rating_notFound">
+      <div className="lottie" >
+      <NotFoundAlpha />
+      </div>
+    </div>
+  }
 
   return (
     <div id="profile">
-      {isLoading ? ( 
-        <h1>Loading...</h1>
-      ) : (
-        username !== undefined && (
           <Dashboard user={user} />
-        )
-      )}
     </div>
   );
 };

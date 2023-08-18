@@ -10,7 +10,7 @@ const UserHandles = (props) => {
     <div className='handles-container'>
       <div className='sub-container'>
         <div className='handle'>Codeforces</div>
-        {props.user.codeforcesURL ?
+        {props.user.codeforcesURL !== undefined ?
           (
             <div className='handle-content'>
               <Codeforces profileUsername={props.user.codeforcesURL} />
