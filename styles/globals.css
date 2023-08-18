@@ -254,7 +254,7 @@ body {
 
 #dashboard .userHandles {
   margin: 5px;
-  flex-grow: 5;
+  flex-grow: 2;
   border: #3019c7;
   border-radius: 1rem;
   box-shadow: 0 0 1rem 0.5rem rgba(0, 0, 0, 0.5);
@@ -303,4 +303,70 @@ body {
 
 #dashboard .userInfo .urls div .url {
   margin-left: 5%;
+}
+
+.handles-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.handles-container .sub-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  height: 95%;
+  width: 80%;
+  flex-grow: 1;
+}
+
+.handles-container .sub-container:not(:first-child){
+  border-left: 3px solid #145672
+}
+
+.handles-container .handle {
+  font-size: large;
+  font-family: cursive;
+}
+
+.all_info 
+{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* background-color: #145672; */
+}
+
+.all_info .eachinfo
+{
+  display: flex;
+  width: 100%;
+  font-family: cursive;
+  font-weight: lighter;
+  /* background: red; */
+}
+
+.all_info .title 
+{
+  flex-grow: 3;
+}
+
+.all_info .value{
+  flex-grow: 1;
+  padding-left: auto;
+  text-align: right;
+}
+
+.handles-container .handle-content{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  padding: 2rem;
 }

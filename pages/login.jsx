@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import store from "../Store/baseStore";
 import  {loginUser}  from "../Store/loginStore";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 
 const Login = () => {
@@ -15,9 +16,11 @@ const Login = () => {
   const {loggedIn} = useSelector(state => state.login)
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (loggedIn) {
+      dispatch(loginUser({userName : username}));
       router.push("/");
     }
   }, [loggedIn]);

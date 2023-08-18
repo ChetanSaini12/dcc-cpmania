@@ -4,6 +4,9 @@ import Link from 'next/link'
 import { Home_Page, Contest_Page, Leaderboard_Page, Profile_Page, Login_Page, Sign_Up_Page } from '../../../utils/Constants'
 import { useSelector } from 'react-redux'
 import { GiHamburgerMenu } from 'react-icons/gi'
+import { useRouter } from 'next/router'
+import { useDispatch } from 'react-redux'
+import { logoutUser } from '../../../Store/loginStore'
 const Navbar = () => {
   const {loggedIn,userName, profile_pic} = useSelector(state => state.login);
   return (
@@ -60,6 +63,15 @@ const Navbar = () => {
 
 function UserMenu(props)
 {
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    dispatch(logoutUser());
+    router.push('/');
+  }
+
+
   return(
     <div className='dropdown dropdown-end'>
       <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -73,7 +85,7 @@ function UserMenu(props)
         <li><Link href={Profile_Page}>Profile</Link></li>
         <li><Link href={Leaderboard_Page}>Report a bug</Link></li>
         <hr/>
-        <li><Link href={Login_Page}>Logout</Link></li>
+        <li><button onClick={handleLogout}>Logout</button></li>
       </ul>
     </div>
   )

@@ -5,12 +5,14 @@ import { Login_Page} from "@/utils/Constants";
 import Link from "next/link";   
 import { useSelector } from "react-redux";
 import store from "../Store/baseStore";
-import  loginUser  from "../Store/loginStore";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { loginUser } from '../Store/loginStore'
 
 
 const SingUp = () => {
 
+  const dispatch = useDispatch();
   const router = useRouter();
   const {loggedIn} = useSelector(state => state.login)
   const [login, setLogin] = useState(false);
@@ -32,11 +34,6 @@ const SingUp = () => {
   }, [loggedIn]);
 
   const onSignUp = async (e) => {
-
-
-
-
-
     e.preventDefault();
     try {
     const response = await fetch("http://localhost:7000/auth/signup", {
@@ -48,21 +45,23 @@ const SingUp = () => {
     });
 
     const content = await response.json();
-    console.log("Response: " + response);    
-    console.log("Content: " + content);
-    if (content.success) {
-      setLogin(true);
-      store.dispatch(loginUser({username : username, loggedIn : true}));
-      router.push("/");
-    } else {
-
-      setError(content.message);
-      // alert(content.message);
-    }
-  }
-  catch(err){
-    console.error("Error fetching data:", err);
-  }
+        
+        if (content.success) { 
+          console.log("Response: " , response);    
+          console.log("Content: " , content);
+          dispatch(loginUser({
+            userName: username
+          }));
+          setLogin(true);
+          
+          router.push("/");
+        } else {
+          setError(content.message);
+        }
+      }
+      catch(err){
+        console.error("Error fetching data:", err);
+      }
   };
 
 
@@ -83,7 +82,6 @@ const SingUp = () => {
             <span className="label-text">
               <pre data-prefix="$" className="text-success">
                 <code>Username:
-
                   <span className="user_cf" >(Using the Codeforces username is recommended, if available.)</span>
                 </code>
               </pre>{" "}

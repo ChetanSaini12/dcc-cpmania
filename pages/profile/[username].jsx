@@ -49,6 +49,7 @@ const Profile = () => {
 
             if (response.ok) {
               const data = await response.json()
+
               setUser(data.user); 
             } else {
               console.error("Error fetching user data:", response.statusText);
@@ -58,7 +59,7 @@ const Profile = () => {
           } finally {
             setIsLoading(false); 
           }
-        })();
+        })(); 
       }
     }
   }, [username]); 
