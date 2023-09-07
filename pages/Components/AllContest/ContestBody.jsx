@@ -12,8 +12,8 @@ const ContestBody = (props) => {
       try {
         setContests(null);
         const response = await fetch(
-          `${Base_Url}schedule/${slug}`,
-          // `https://super-school-uniform-pike.cyclic.app/schedule/${slug}`,
+          `${Base_Url}/schedule/${slug}`,
+          // `https://backend-cpman.onrender.com/schedule/${slug}`,
           { 
             method: "GET",
           }

@@ -420,3 +420,24 @@ body {
   width: 10vw;
   color: #3c324d;
 }
+
+#issue .in-progress-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:60vh;
+}
+
+#issue .in-progress-message {
+  font-size: 3rem;
+  text-align: center;
+  color: #555;
+}
+
+@media screen and (max-width: 768px) {
+  #issue .in-progress-message {
+    font-size: 2rem;
+  }
+}
+  
+

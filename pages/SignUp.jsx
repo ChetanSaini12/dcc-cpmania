@@ -36,7 +36,7 @@ const SingUp = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     try {
-    const response = await fetch("http://localhost:7000/auth/signup", {
+    const response = await fetch("https://backend-cpman.onrender.com/auth/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -28,7 +28,7 @@ const Login = () => {
 
   const onLogin = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:7000/auth/login", {
+    const response = await fetch("https://backend-cpman.onrender.com/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
