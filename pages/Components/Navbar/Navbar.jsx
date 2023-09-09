@@ -20,7 +20,7 @@ const Navbar = () => {
       <ul className='navbar-links'>
             <li><Link href= {Home_Page} >Home</Link></li>
             <li><Link href={Contest_Page}>Contest</Link></li>
-            <li><Link href={Leaderboard_Page}>Leaderboard</Link></li>
+            {/* <li><Link href={Leaderboard_Page}>Leaderboard</Link></li> */}
             {loggedIn &&
             <>
             <div className="vl"></div>
@@ -42,7 +42,7 @@ const Navbar = () => {
         <ul className='navbar-links-off'>
             <li><Link href= {Home_Page} >Home</Link></li>
             <li><Link href={Contest_Page}>Contest</Link></li>
-            <li><Link href={Leaderboard_Page}>Leaderboard</Link></li>
+            {/* <li><Link href={Leaderboard_Page}>Leaderboard</Link></li> */}
             {loggedIn &&
             <>
             <div className="vl"></div>
@@ -83,7 +83,7 @@ function UserMenu(props)
         <li><span>{props.userName}</span></li>
         <hr />
         <li><Link href={Profile_Page}>Profile</Link></li>
-        <li><Link href={Leaderboard_Page}>Report a bug</Link></li>
+        {/* <li><Link href={Leaderboard_Page}>Report a bug</Link></li> */}
         <hr/>
         <li><button onClick={handleLogout}>Logout</button></li>
       </ul>

@@ -5,15 +5,15 @@ import Leetcode from './leetcode'
 import Atcoder from './atcoder'
 
 
-const UserHandles = (props) => {
+const UserHandles = ({user}) => {
   return (
     <div className='handles-container'>
       <div className='sub-container'>
         <div className='handle'>Codeforces</div>
-        {props.user.codeforcesURL !== undefined ?
+        {user.codeforcesURL?
           (
             <div className='handle-content'>
-              <Codeforces profileUsername={props.user.codeforcesURL} />
+              <Codeforces profileUsername={user.codeforcesURL} />
             </div>
           )
           :
@@ -22,10 +22,10 @@ const UserHandles = (props) => {
       </div>
       <div className='sub-container'>
         <div className='handle'>Codechef</div>
-        {props.user.codechefURL ?
+        {user.codechefURL ?
           (
             <div className='handle-content'>
-              <Codechef profileUsername={props.user.codechefURL} />
+              <Codechef profileUsername={user.codechefURL} />
             </div>
           )
           :
@@ -34,10 +34,10 @@ const UserHandles = (props) => {
       </div>
       <div className='sub-container'>
         <div className='handle'>Leetcode</div>
-        {props.user.leetcodeURL ?
+        {user.leetcodeURL ?
           (
             <div className='handle-content'>
-              <Leetcode profileUsername={props.user.leetcodeURL} />
+              <Leetcode profileUsername={user.leetcodeURL} />
             </div>
           )
           :
@@ -46,10 +46,10 @@ const UserHandles = (props) => {
       </div>
       <div className='sub-container'>
         <div className='handle'>Atcoder</div>
-        {props.user.atcoderURL ?
+        {user.atcoderURL ?
           (
             <div className='handle-content'>
-              <Atcoder profileUsername={props.user.atcoderURL} />
+              <Atcoder profileUsername={user.atcoderURL} />
             </div>
           )
           :

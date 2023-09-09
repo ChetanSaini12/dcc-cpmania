@@ -8,6 +8,8 @@ import store from "../Store/baseStore";
 import  {loginUser}  from "../Store/loginStore";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { Base_Url } from "@/utils/Constants";
+import axios from "axios";
 
 
 const Login = () => {
@@ -28,26 +30,16 @@ const Login = () => {
 
   const onLogin = async (e) => {
     e.preventDefault();
-    const response = await fetch("https://backend-cpman.onrender.com/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-    });
-
-    
-
-    const content = await response.json();
-    console.log(content);
-    if (content.success) {
-
+    await axios.post(`${Base_Url}/auth/login`,{
+      username,
+      password
+    }).then((res)=>{
       store.dispatch(loginUser({username : username, loggedIn : true}));
       console.log("Login Success");
       router.push("/");
-    } else {
-      alert(content.message);
-    }
+    }).catch((err)=>{
+      alert(err.message);
+    })
   };
 
 

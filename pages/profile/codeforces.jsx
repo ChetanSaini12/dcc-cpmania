@@ -13,8 +13,9 @@ const Codeforces = props => {
     const [isLoading, setIsLoading] = useState(true);
     
     useEffect(() => {
+     console.log(`${Rating_Url}/codeforces/${props.profileUsername}`)
         axios.get(`${Rating_Url}/codeforces/${props.profileUsername}`)
-        .then(res => {
+        .then((res) => {
             setInfo(res.data.data);
             setIsLoading(false);
         })

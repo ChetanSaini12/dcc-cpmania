@@ -6,13 +6,13 @@ import axios from 'axios'
 import NotFoundBita from '../Components/NotFound/notFounfbita'
 import LoadingSkel1 from '../Components/LoadingAnimation/loadingSkel1'
 
-const Leetcode = props => {
+const Leetcode = ({profileUsername}) => {
 
     const [info, setInfo] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     
     useEffect(() => {
-        axios.get(`${Rating_Url}/leet_code/${props.profileUsername}`)
+        axios.get(`${Rating_Url}/leet_code/${profileUsername}`)
         .then(res => {
             setInfo(res.data.data);
             setIsLoading(false);

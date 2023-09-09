@@ -1,8 +1,7 @@
 {
   "homepage": "https://ChetanSaini12.github.io/dcc-cpmania",
   "name": "panda",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,6 +10,9 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
+  "eslint": {
+    "ignoreDuringBuilds": true
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "autoprefixer": "10.4.14",
@@ -18,7 +20,7 @@
     "eslint": "8.43.0",
     "eslint-config-next": "13.4.7",
     "lottie-react": "^2.4.0",
-    "next": "13.4.7",
+    "next": "^13.4.7",
     "postcss": "8.4.24",
     "react": "18.2.0",
     "react-dom": "18.2.0",

@@ -16,8 +16,6 @@ const Profile = () => {
       router.push("/profile/"+userName);
     }
   }, [loggedIn, userName]); 
-
-
 }
 
 export default Profile

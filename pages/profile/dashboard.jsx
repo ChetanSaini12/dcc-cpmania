@@ -6,59 +6,58 @@ import {
   SiLeetcode,
   SiCodeproject,
 } from "react-icons/si";
-import span from "next/link";
 import UserHandles from "./userHandles";
 
-const Dashboard = (props) => {
+const Dashboard = ({user}) => {
   return (
     <div id="dashboard">
       <div className="userInfo">
         <div className="userAvatar">
-          <img src={props.user.profile_pic} alt="user avatar" />
+          <img src={user.profile_pic} alt="user avatar" />
         </div>
-        <div className="userName" >{props.user.username}</div>
-        <div className="name">{props.user.name}</div>
+        <div className="userName" >{user.username}</div>
+        <div className="name">{user.name}</div>
         <div className="urls">
         <div>
             <SiCodeforces className="inline" />
             {
-                props.user.codeforcesURL === "" ?
+                user.codeforcesURL === "" ?
                     <span className="url">Not Available</span>
             :
-                <a className="url" href = {"https://codeforces.com/profile/" + props.user.codeforcesURL} target = "_blank" > {props.user.codeforcesURL} </a>
+                <a className="url" href = {"https://codeforces.com/profile/" + user.codeforcesURL} target = "_blank" > {user.codeforcesURL} </a>
             }
           </div>
           <div>
             <SiCodechef className="inline" />
             {
-                props.user.codechefURL === "" ?
+                user.codechefURL === "" ?
                     <span className="url">Not Available</span>
             :
-                <a className="url" href = {"https://www.codechef.com/users/" + props.user.codechefURL} target = "_blank" > {props.user.codechefURL} </a>
+                <a className="url" href = {"https://www.codechef.com/users/" + user.codechefURL} target = "_blank" > {user.codechefURL} </a>
             }
           </div>
           <div>
             <SiLeetcode className="inline" />
             {
-                props.user.leetcodeURL === "" ?
+                user.leetcodeURL === "" ?
                     <span className="url">Not Available</span>
             :
-                <a className="url" href = {"https://leetcode.com/" + props.user.leetcodeURL} target = "_blank" > {props.user.leetcodeURL} </a>
+                <a className="url" href = {"https://leetcode.com/" + user.leetcodeURL} target = "_blank" > {user.leetcodeURL} </a>
             }
           </div>
           <div>
             <SiCodeproject className="inline" />
             {
-                props.user.atcoderURL === "" ?
+                user.atcoderURL === "" ?
                     <span className="url">Not Available</span>
             :
-                <a className="url" href = {"https://atcoder.jp/users/" + props.user.atcoderURL} target = "_blank" >{props.user.atcoderURL}</a>
+                <a className="url" href = {"https://atcoder.jp/users/" + user.atcoderURL} target = "_blank" >{user.atcoderURL}</a>
             }
           </div>
         </div>
       </div>
       <div className="userHandles">
-        <UserHandles user={props.user} />
+        <UserHandles user={user} />
       </div>
     </div>
   );

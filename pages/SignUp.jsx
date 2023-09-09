@@ -8,6 +8,8 @@ import store from "../Store/baseStore";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { loginUser } from '../Store/loginStore'
+import { Base_Url } from "@/utils/Constants";
+import axios from "axios";
 
 
 const SingUp = () => {
@@ -33,22 +35,16 @@ const SingUp = () => {
     }
   }, [loggedIn]);
 
+
+
   const onSignUp = async (e) => {
     e.preventDefault();
     try {
-    const response = await fetch("https://backend-cpman.onrender.com/auth/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name, email, password , confirm_password , username , leetcodeURL , codeforcesURL , codechefURL , atcoderURL }),
-    });
-
-    const content = await response.json();
-        
-        if (content.success) { 
-          console.log("Response: " , response);    
-          console.log("Content: " , content);
+      await axios.post(`${Base_Url}/auth/signup`,
+      {
+         name, email, password , confirm_password , username , leetcodeURL , codeforcesURL , codechefURL , atcoderURL
+      }).then((res)=>{
+        if (res.data.success) {
           dispatch(loginUser({
             userName: username
           }));
@@ -56,13 +52,16 @@ const SingUp = () => {
           
           router.push("/");
         } else {
-          setError(content.message);
+          setError(res.data.message);
         }
-      }
-      catch(err){
+      })
+      .catch((err)=>{
         console.error("Error fetching data:", err);
-      }
-  };
+      })
+  }catch{
+    console.error("Error fetching data")
+  }
+  }
 
 
 

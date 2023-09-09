@@ -2,35 +2,28 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import LoadingAnimation from "../LoadingAnimation/LottieLoadingAnimation";
 import { Base_Url } from "@/utils/Constants";
+import axios from "axios";
 
 const ContestBody = (props) => {
   const [contests, setContests] = useState(null);
-  const slug = props.platform.toLowerCase();
+  const slug = props.platform?.toLowerCase();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setContests(null);
-        const response = await fetch(
-          `${Base_Url}/schedule/${slug}`,
-          // `https://backend-cpman.onrender.com/schedule/${slug}`,
-          { 
-            method: "GET",
-          }
-        );
-        const data = await response.json();
-        data.sort((a, b) => a.remaining_time - b.remaining_time);
-        setContests(data);
-      } catch (error) {
-        console.error("Error fetching Contest:", error);
-      }
-    };
-
     fetchData();
-
     // }, 10000);
   }, [slug]);
 
+  const fetchData = async () => {
+    try {
+      await axios.get(`${Base_Url}/schedule/${slug}`).then((res)=>{
+        const {data}=res
+        data.sort((a, b) => a.remaining_time - b.remaining_time);
+        setContests(data);
+      })
+    } catch (error) {
+      console.error("Error fetching Contest:", error);
+    }
+  };
   const formatTime = (timeInSeconds) => {
     const days = Math.floor(timeInSeconds / 86400);
     const hours = Math.floor((timeInSeconds % 86400) / 3600);
