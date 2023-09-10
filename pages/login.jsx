@@ -12,7 +12,7 @@ import { Base_Url } from "@/utils/Constants";
 import axios from "axios";
 
 
-const Login = () => {
+const login = () => {
 
   const router = useRouter();
   const {loggedIn} = useSelector(state => state.login)
@@ -96,4 +96,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default login;
