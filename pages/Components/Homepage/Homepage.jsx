@@ -22,7 +22,7 @@ const Homepage = () => {
             className="bg-gradient-to-r from-sky-300 to-fuchsia-700 text-transparent bg-clip-text ">Dream Code Compete
             </span>
             </h1>
-          <p className="bg-gradient-to-r from-teal-300 to-fuchsia-300 text-transparent bg-clip-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo a nihil labore inventore libero quaerat enim ea, explicabo, iste obcaecati expedita quidem nesciunt? Excepturi inventore necessitatibus quos eum, quam delectus!</p>
+          <p className="bg-gradient-to-r from-teal-300 to-fuchsia-300 text-transparent bg-clip-text">Unlock a world of coding convenience! Effortlessly track contests and manage your coding journey with insightful statistics, all in one place.</p>
         </div>
       </div>
     </div>
