@@ -15,7 +15,7 @@ const Profile = () => {
   const fetchData=async(username)=>{
     setIsLoading(true);
     await axios.get( `${Base_Url}/profile/${username}`).then((res)=>{
-      const {data}=res
+      const data=res.data
       if(data.success==true){
         setIsvalid(true);
         setUser(data.user);
