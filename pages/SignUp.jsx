@@ -12,7 +12,7 @@ import { Base_Url } from "@/utils/Constants";
 import axios from "axios";
 
 
-const signup = () => {
+const Signup = () => {
 
   const dispatch = useDispatch();
   const router = useRouter();
@@ -262,4 +262,4 @@ const signup = () => {
   );
 };
 
-export default signup;
+export default Signup;
